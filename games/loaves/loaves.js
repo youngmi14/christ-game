@@ -9,15 +9,17 @@ const CONFIG = {
   maxSitters: 60,
 };
 
-// 그림이 준비되면 이모지 대신 경로를 넣는다. 예: bread: 'images/bread.png'
+// 그림 파일 경로 (이모지 글자를 넣어도 동작한다)
+const IMG = '../../assets/fluent/';
 const ASSETS = {
-  bread: '🍞',
-  fish: '🐟',
-  basket: '🧺',
-  happy: '😋',
-  dizzy: '😵',
-  cloud: '☁️',
-  people: ['👦', '👧', '👨', '👩', '👴', '👵', '🧔', '👱‍♀️', '🧑', '👨‍🦱', '👩‍🦱', '🧒'],
+  bread: IMG + 'bread.png',
+  fish: IMG + 'fish.png',
+  basket: IMG + 'basket.png',
+  happy: IMG + 'yum.png',
+  dizzy: IMG + 'dizzy.png',
+  cloud: IMG + 'cloud.png',
+  people: ['boy', 'girl', 'man', 'woman', 'old-man', 'old-woman', 'man-beard', 'woman-blonde', 'person', 'man-curly', 'woman-curly', 'child']
+    .map((name) => IMG + name + '.png'),
 };
 
 const ITEMS = ['bread', 'fish'];

@@ -61,13 +61,12 @@ python3 -m http.server 8000
 - `spawnEvery`: 장애물이 나오는 간격 (처음 → 마지막, 클수록 쉬움)
 - `fallSec`: 장애물이 떨어지는 시간 (처음 → 마지막, 클수록 쉬움)
 
-## 그림 교체
+## 그림
 
-각 게임 JS 파일의 `ASSETS` 에서 이모지를 이미지 경로로 바꾸면 된다. 배경이 투명한 PNG를 권장한다.
+지금은 Microsoft Fluent Emoji 3D 그림(`assets/fluent/`, MIT 라이선스)을 쓴다.
+각 게임 JS 파일의 `ASSETS` 경로를 바꾸면 그림이 바뀐다. (이모지 글자를 넣어도 동작한다)
 
-```js
-bread: 'images/bread.png',   // 원래 '🍞'
-```
+성탄 인물처럼 새로 만들어야 할 그림 목록과 AI 프롬프트는 `assets/README.md` 에 있다.
 
 ## 효과음 교체
 

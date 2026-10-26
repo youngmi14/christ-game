@@ -149,6 +149,10 @@ body.star-game {
   pointer-events: none;
 }
 
+.camel .sprite {
+  filter: drop-shadow(0 0.6vmin 0.6vmin rgba(60, 30, 0, 0.4));
+}
+
 .camel.lead {
   bottom: 16%;
   z-index: 4;

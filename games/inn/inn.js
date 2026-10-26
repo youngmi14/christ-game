@@ -9,18 +9,19 @@ const CONFIG = {
   finaleMs: 1800, // 마구간 문이 열리고 결과가 뜰 때까지
 };
 
-// 그림이 준비되면 이모지 대신 경로를 넣는다. 예: mary: 'images/mary.png'
+// 그림 파일 경로 (이모지 글자를 넣어도 동작한다)
+const IMG = '../../assets/fluent/';
 const ASSETS = {
-  door: '🚪',
-  stable: '🛖',
-  baby: '👶',
-  mary: '👩',
-  joseph: '🧔',
-  angel: '👼',
-  shepherd: '🧑‍🌾',
-  sheep: '🐑',
-  magi: '🤴',
-  star: '⭐',
+  door: IMG + 'door.png',
+  stable: IMG + 'hut.png',
+  baby: IMG + 'baby.png',
+  mary: IMG + 'woman.png',
+  joseph: IMG + 'man-beard.png',
+  angel: IMG + 'baby-angel.png',
+  shepherd: IMG + 'farmer.png',
+  sheep: IMG + 'sheep.png',
+  magi: IMG + 'prince.png',
+  star: IMG + 'star.png',
 };
 
 // 판마다 이 중에서 CONFIG.pairs 개를 골라 짝을 만든다.

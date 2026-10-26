@@ -44,6 +44,11 @@ body.stable-game {
   transform: translateX(-50%);
 }
 
+/* 비슷한 색의 지푸라기 바닥에서 묻히지 않게 그림자를 준다 (숨은 물건에는 주지 않는다) */
+.holy .sprite {
+  filter: drop-shadow(0 0.4vmin 0.6vmin rgba(60, 30, 0, 0.45));
+}
+
 .cow {
   left: 29%;
   bottom: 30%;

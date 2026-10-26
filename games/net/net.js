@@ -12,13 +12,15 @@ const CONFIG = {
   hintMs: 3000,
 };
 
-// 그림이 준비되면 이모지 대신 경로를 넣는다. 예: fish: 'images/fish.png'
+// 그림 파일 경로 (이모지 글자를 넣어도 동작한다)
+const IMG = '../../assets/fluent/';
 const ASSETS = {
-  fish: '🐟',
+  fish: IMG + 'fish.png',
   fishFacesLeft: true, // 물고기 그림이 오른쪽을 보고 있으면 false
-  boat: '⛵',
-  fire: '🔥',
-  bread: '🍞',
+  boat: IMG + 'sailboat.png',
+  fire: IMG + 'fire.png',
+  bread: IMG + 'bread.png',
+  tap: IMG + 'tap.png',
 };
 
 const $ = (id) => document.getElementById(id);

@@ -14,25 +14,28 @@ const CONFIG = {
   hitRadius: 6, // 이 거리 안을 누르면 찾은 것으로 친다 (vmin)
 };
 
-// 그림이 준비되면 이모지 대신 경로를 넣는다. 예: dove: 'images/dove.png'
+// 그림 파일 경로 (이모지 글자를 넣어도 동작한다)
+const IMG = '../../assets/fluent/';
 const ASSETS = {
-  moon: '🌙',
-  baby: '👶',
-  mary: '👩',
-  joseph: '🧔',
-  cow: '🐄',
-  sheep: '🐑',
-  star: '⭐',
-  gift: '🎁',
-  dove: '🕊️',
-  lamp: '🪔',
-  trumpet: '🎺',
-  bell: '🔔',
-  mouse: '🐭',
-  candle: '🕯️',
-  crown: '👑',
-  key: '🗝️',
-  clutter: ['🌾', '🌾', '🌾', '🪵', '🪣', '🧺', '🍂', '🪨', '🌿', '🥕', '🐓', '🐈', '🪶'],
+  moon: IMG + 'moon.png',
+  baby: IMG + 'baby.png',
+  mary: IMG + 'woman.png',
+  joseph: IMG + 'man-beard.png',
+  cow: IMG + 'cow.png',
+  sheep: IMG + 'sheep.png',
+  tap: IMG + 'tap.png',
+  star: IMG + 'star.png',
+  gift: IMG + 'gift.png',
+  dove: IMG + 'dove.png',
+  lamp: IMG + 'lamp.png',
+  trumpet: IMG + 'trumpet.png',
+  bell: IMG + 'bell.png',
+  mouse: IMG + 'mouse.png',
+  candle: IMG + 'candle.png',
+  crown: IMG + 'crown.png',
+  key: IMG + 'key.png',
+  clutter: ['rice', 'rice', 'rice', 'wood', 'bucket', 'basket', 'leaf', 'rock', 'herb', 'carrot', 'rooster', 'cat', 'feather']
+    .map((name) => IMG + name + '.png'),
 };
 
 // 판마다 이 중에서 CONFIG.targets 개를 골라 숨긴다. 잡동사니(clutter)와 겹치지 않는 그림이어야 한다.

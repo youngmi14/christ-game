@@ -14,17 +14,18 @@ const CONFIG = {
   arriveMs: 2000, // 마구간이 나타나고 결과가 뜰 때까지
 };
 
-// 그림이 준비되면 이모지 대신 경로를 넣는다. 예: camel: 'images/camel.png'
+// 그림 파일 경로 (이모지 글자를 넣어도 동작한다)
+const IMG = '../../assets/fluent/';
 const ASSETS = {
-  camel: '🐫',
-  star: '⭐',
-  heart: '❤️',
-  stable: '🛖',
-  baby: '👶',
-  gold: '👑',
-  incense: '🏺',
-  myrrh: '🫙',
-  obstacles: ['🪨', '🌵', '🌪️'],
+  camel: IMG + 'camel.png',
+  star: IMG + 'glowing-star.png',
+  heart: IMG + 'heart.png',
+  stable: IMG + 'hut.png',
+  baby: IMG + 'baby.png',
+  gold: IMG + 'crown.png',
+  incense: IMG + 'amphora.png',
+  myrrh: IMG + 'jar.png',
+  obstacles: [IMG + 'rock.png', IMG + 'cactus.png', IMG + 'tornado.png'],
 };
 
 const GIFTS = [
