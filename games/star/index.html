@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>예수님을 만나러 가요</title>
+  <link rel="stylesheet" href="../../shared/common.css">
+  <link rel="stylesheet" href="star.css">
+</head>
+<body class="star-game">
+  <div class="app">
+    <header class="hud">
+      <div class="hearts" id="hearts"></div>
+      <div class="gauge">
+        <div class="gauge-fill" id="gaugeFill"></div>
+        <div class="gauge-text">베들레헴까지</div>
+      </div>
+      <div class="gift-slots">
+        <span class="slot" data-gift="gold"><span data-asset="gold"></span></span>
+        <span class="slot" data-gift="incense"><span data-asset="incense"></span></span>
+        <span class="slot" data-gift="myrrh"><span data-asset="myrrh"></span></span>
+      </div>
+    </header>
+
+    <main class="field" id="field">
+      <div class="sand"></div>
+      <span class="guide-star" data-asset="star"></span>
+      <div class="stable" id="stable">
+        <span data-asset="stable"></span>
+        <span class="baby" data-asset="baby"></span>
+      </div>
+      <div class="items" id="items"></div>
+      <div class="camel follower" id="follower2"><span data-asset="camel"></span></div>
+      <div class="camel follower" id="follower1"><span data-asset="camel"></span></div>
+      <div class="camel lead" id="lead"><span data-asset="camel"></span></div>
+      <div class="drag-hint" id="dragHint" hidden>👆 좌우로 끌어서 움직여요</div>
+    </main>
+  </div>
+
+  <section class="overlay" id="intro">
+    <div class="card">
+      <h1>예수님을 만나러 가요</h1>
+      <p>동방박사들이 밝은 별을 보고<br>아기 예수님을 만나러 길을 떠났어요!</p>
+      <div class="howto">
+        <div class="howto-step">
+          <span data-asset="gold"></span><span data-asset="incense"></span><span data-asset="myrrh"></span>
+        </div>
+        <p>낙타를 <b>좌우로 끌어서</b> 떨어지는 바위를 피하고<br>예물 <b>황금, 유향, 몰약</b>을 모아요.</p>
+      </div>
+      <p>예물 세 가지를 모두 들고<br><b>베들레헴</b>에 도착하면 통과!</p>
+      <div class="btn-row">
+        <button class="btn" id="startBtn">시작하기</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="overlay countdown" id="countdown" hidden>
+    <div class="countdown-text">3</div>
+  </section>
+
+  <section class="overlay" id="result" hidden>
+    <div class="card">
+      <div class="result-win">
+        <h1>예수님을 만났어요!</h1>
+        <div class="stamp">참<br>잘했어요</div>
+        <div class="offering">
+          <span data-asset="gold"></span><span data-asset="incense"></span><span data-asset="myrrh"></span>
+        </div>
+        <p>별을 따라 베들레헴에 도착해서<br>아기 예수님께 <b>황금, 유향, 몰약</b>을 드렸어요.</p>
+        <p class="verse">마태복음 2:10-11</p>
+        <p class="stamp-guide">스탬프를 받으세요!</p>
+      </div>
+      <div class="result-lose">
+        <h1>아쉬워요!</h1>
+        <p id="loseText"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="retryBtn">다시 하기</button>
+        <a class="btn secondary" href="../../index.html">처음 화면</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="../../shared/common.js"></script>
+  <script src="star.js"></script>
+</body>
+</html>

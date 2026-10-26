@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>오병이어 나눠주기</title>
+  <link rel="stylesheet" href="../../shared/common.css">
+  <link rel="stylesheet" href="loaves.css">
+</head>
+<body class="loaves">
+  <div class="app">
+    <header class="hud">
+      <div class="timer" id="timer"><span id="time">60</span>초</div>
+      <div class="gauge">
+        <div class="gauge-fill" id="gaugeFill"></div>
+        <div class="gauge-text" id="gaugeText">0 / 5,000명</div>
+      </div>
+    </header>
+
+    <main class="field">
+      <span class="cloud c1" data-asset="cloud"></span>
+      <span class="cloud c2" data-asset="cloud"></span>
+      <div class="crowd" id="crowd"></div>
+      <div class="queue" id="queue"></div>
+    </main>
+
+    <footer class="controls" id="controls">
+      <button class="give" id="giveBread" data-item="bread">
+        <span data-asset="bread"></span>
+        <span class="label">빵</span>
+      </button>
+      <span class="basket" data-asset="basket"></span>
+      <button class="give" id="giveFish" data-item="fish">
+        <span data-asset="fish"></span>
+        <span class="label">물고기</span>
+      </button>
+      <div class="stun">
+        <div><span data-asset="dizzy"></span> 앗! 잘못 줬어요</div>
+        <div class="stun-bar"></div>
+      </div>
+    </footer>
+  </div>
+
+  <section class="overlay" id="intro">
+    <div class="card">
+      <h1>오병이어 나눠주기</h1>
+      <p>한 아이가 드린 <b>빵 5개와 물고기 2마리</b>로<br>예수님께서 <b>오천 명</b>을 먹이셨어요!</p>
+      <div class="howto">
+        <div class="howto-step">
+          <span class="howto-bubble" data-asset="bread"></span>
+          <span class="howto-arrow">→</span>
+          <span class="howto-key" data-asset="bread"></span>
+        </div>
+        <p>말풍선을 보고 원하는 음식을 눌러 주세요.<br>잘못 주면 <b>1초 동안</b> 멈춰요!</p>
+      </div>
+      <p><b>60초 안에 5,000명</b>을 먹이면 통과!</p>
+      <div class="btn-row">
+        <button class="btn" id="startBtn">시작하기</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="overlay countdown" id="countdown" hidden>
+    <div class="countdown-text">3</div>
+  </section>
+
+  <section class="overlay" id="result" hidden>
+    <div class="card">
+      <div class="result-win">
+        <h1>통과!</h1>
+        <div class="stamp">참<br>잘했어요</div>
+        <div class="baskets" id="baskets"></div>
+        <p>모두 배불리 먹고도<br><b>열두 바구니</b>가 남았어요!</p>
+        <p class="verse">마가복음 6:42-43</p>
+        <p class="stamp-guide">스탬프를 받으세요!</p>
+      </div>
+      <div class="result-lose">
+        <h1>아쉬워요!</h1>
+        <p><b id="servedCount">0</b>명에게 나눠 주었어요.<br>다시 도전해 볼까요?</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="retryBtn">다시 하기</button>
+        <a class="btn secondary" href="../../index.html">처음 화면</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="../../shared/common.js"></script>
+  <script src="loaves.js"></script>
+</body>
+</html>

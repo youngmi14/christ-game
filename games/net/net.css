@@ -1,0 +1,237 @@
+body.net-game {
+  overflow: hidden;
+}
+
+/* ---------- 새벽 하늘과 물가 ---------- */
+
+.scene {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sky {
+  position: relative;
+  height: 22%;
+  background: linear-gradient(#9cc7ee, #ffd9b0 85%, #ffc59a);
+}
+
+.sun {
+  position: absolute;
+  left: 55%;
+  bottom: -6vmin;
+  width: 16vmin;
+  height: 16vmin;
+  border-radius: 50%;
+  background: radial-gradient(#fff3c4, #ffc670 60%, rgba(255, 198, 112, 0) 71%);
+}
+
+/* 오른쪽 멀리 보이는 물가: 예수님이 숯불을 피워 두신 곳 */
+.shore {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 20%;
+  height: 34%;
+  padding-bottom: 0.5vmin;
+  border-top-left-radius: 100% 100%;
+  background: #f1d29b;
+  font-size: 4.5vmin;
+}
+
+/* ---------- 바다 ---------- */
+
+.sea {
+  position: relative;
+  flex: 1;
+  background: linear-gradient(#5ec4ef, #2a86c9 45%, #15508f);
+}
+
+.sea::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1.6vmin;
+  background: radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.7) 0 45%, transparent 50%) 0 0 / 4vmin 100% repeat-x;
+}
+
+.fish-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.fish {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 7vmin;
+  will-change: transform;
+}
+
+.fish.hauled {
+  opacity: 0;
+  transition: transform 0.45s ease-in, opacity 0.45s ease-in;
+}
+
+.boat {
+  position: absolute;
+  left: var(--boat-x);
+  top: 0;
+  z-index: 2;
+  font-size: 18vmin;
+  line-height: 1;
+  pointer-events: none;
+  animation: bob 2.4s ease-in-out infinite alternate;
+}
+
+.hint {
+  position: absolute;
+  left: calc(var(--boat-x) + 9vmin);
+  top: 3vmin;
+  z-index: 3;
+  padding: 0.4em 0.8em;
+  border-radius: 999px;
+  background: #fff;
+  font-size: clamp(20px, 3.6vh, 36px);
+  font-weight: 900;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  animation: nudge 0.6s ease-in-out infinite alternate;
+}
+
+.hint[hidden] {
+  display: none;
+}
+
+/* ---------- 그물과 밧줄 ---------- */
+
+.net {
+  position: absolute;
+  z-index: 1;
+  border: 0.6vmin solid #f5e6c8;
+  border-radius: 50%;
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.7) 0 2px, transparent 2px 2.2vmin),
+    repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.7) 0 2px, transparent 2px 2.2vmin);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.net.thrown {
+  animation: net-throw var(--net-ms) ease-out;
+}
+
+.rope {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rope line {
+  stroke: #f5e6c8;
+  stroke-width: 3;
+  stroke-dasharray: 6 4;
+}
+
+.rope.thrown {
+  animation: rope-fade var(--net-ms) ease-out;
+}
+
+.popup {
+  position: absolute;
+  z-index: 4;
+  color: #ffe066;
+  font-size: clamp(30px, 6vh, 60px);
+  font-weight: 900;
+  white-space: nowrap;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5), 0 3px 0 #1d4f80;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: float-up 1s ease-out forwards;
+}
+
+.popup.empty {
+  color: #fff;
+  font-size: clamp(22px, 4vh, 40px);
+}
+
+/* ---------- 안내창 ---------- */
+
+.quote {
+  margin-top: 1.5vh;
+  color: var(--accent-dark);
+  font-weight: 900;
+}
+
+.howto-step {
+  gap: 1vw;
+}
+
+.howto-tap {
+  margin-left: 2vw;
+}
+
+.breakfast {
+  margin-bottom: 1.5vh;
+  font-size: clamp(40px, 7vh, 70px);
+}
+
+@keyframes bob {
+  from {
+    transform: translate(-50%, -80%) rotate(-3deg);
+  }
+  to {
+    transform: translate(-50%, -75%) rotate(3deg);
+  }
+}
+
+@keyframes nudge {
+  to {
+    transform: translateX(1.2vmin);
+  }
+}
+
+@keyframes net-throw {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.15);
+  }
+  26%,
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+@keyframes rope-fade {
+  0%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes float-up {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -150%);
+  }
+}

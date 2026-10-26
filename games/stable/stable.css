@@ -1,0 +1,254 @@
+body.stable-game {
+  overflow: hidden;
+}
+
+/* ---------- 마구간 장면 ---------- */
+
+.scene {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background:
+    linear-gradient(#5a3518, #5a3518) 0 0 / 100% 2.2vmin no-repeat,
+    repeating-linear-gradient(90deg, #8f5f36 0 9vmin, #6e4524 9vmin 9.5vmin);
+}
+
+.window {
+  position: absolute;
+  left: 4%;
+  top: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15vmin;
+  height: 13vmin;
+  border: 1.2vmin solid #4a2c13;
+  border-radius: 1vmin;
+  background: linear-gradient(#152048, #2d3a72);
+  font-size: 6vmin;
+}
+
+.floor {
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background:
+    repeating-linear-gradient(170deg, transparent 0 1.6vmin, rgba(170, 120, 40, 0.25) 1.6vmin 1.9vmin),
+    linear-gradient(#e6c675, #cfa24c);
+}
+
+/* 가운데 아래: 구유와 가족, 동물들 */
+.holy > * {
+  position: absolute;
+  line-height: 1;
+  transform: translateX(-50%);
+}
+
+.cow {
+  left: 29%;
+  bottom: 30%;
+  font-size: 13vmin;
+}
+
+.sheep {
+  left: 71%;
+  bottom: 30%;
+  font-size: 11vmin;
+}
+
+.mary {
+  left: 38%;
+  bottom: 11%;
+  font-size: 13vmin;
+}
+
+.joseph {
+  left: 62%;
+  bottom: 11%;
+  font-size: 13vmin;
+}
+
+.manger {
+  left: 50%;
+  bottom: 5%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 20vmin;
+  height: 8vmin;
+  border-radius: 0 0 4vmin 4vmin;
+  background: linear-gradient(#a0683a, #6e4524);
+}
+
+/* 구유 위에 깐 지푸라기와 그 위에 누운 아기 */
+.manger .baby {
+  position: relative;
+  z-index: 1;
+  font-size: 8vmin;
+  transform: translateY(-55%);
+}
+
+.manger::before {
+  content: '';
+  position: absolute;
+  inset: -1.5vmin 0 auto;
+  height: 2.2vmin;
+  border-radius: 1vmin;
+  background: #e8c56a;
+}
+
+/* ---------- 잡동사니와 숨은 물건 ---------- */
+
+.props {
+  position: absolute;
+  inset: 0;
+}
+
+.prop,
+.target {
+  position: absolute;
+  line-height: 1;
+  transform: translate(-50%, -50%) rotate(var(--tilt));
+  pointer-events: none;
+}
+
+.prop {
+  z-index: 1;
+}
+
+.target {
+  z-index: 2;
+}
+
+.prop.cover {
+  z-index: 3;
+}
+
+/* 찾으면 동그라미를 치고 가리던 것 위로 올라온다 */
+.target.found {
+  z-index: 4;
+  animation: found 0.4s ease-out;
+}
+
+.target.found::after,
+.target.reveal::after,
+.target.hint::after {
+  content: '';
+  position: absolute;
+  inset: -0.35em;
+  border-radius: 50%;
+}
+
+.target.found::after {
+  border: 0.12em solid var(--red);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.target.reveal {
+  z-index: 4;
+}
+
+.target.reveal::after {
+  border: 0.12em dashed #fff;
+}
+
+.target.hint::after {
+  box-shadow: 0 0 0 0.1em rgba(255, 236, 140, 0.95), 0 0 1em 0.4em rgba(255, 236, 140, 0.8);
+  animation: hint 2s ease-out forwards;
+}
+
+.miss {
+  position: absolute;
+  z-index: 5;
+  color: #fff;
+  font-size: clamp(20px, 3.6vh, 36px);
+  font-weight: 900;
+  white-space: nowrap;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7), 0 2px 0 var(--red);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: float-up 0.9s ease-out forwards;
+}
+
+/* ---------- 아래쪽: 찾을 물건 목록 ---------- */
+
+.wants {
+  display: flex;
+  justify-content: center;
+  gap: 1.5vw;
+  padding: 1.5vh 2vw calc(1.5vh + env(safe-area-inset-bottom));
+  background: var(--sand);
+}
+
+.want {
+  position: relative;
+  display: flex;
+  flex: 0 1 15%;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3vh;
+  padding: 1vh 0.5vw;
+  border-radius: 16px;
+  background: #fff;
+  font-size: clamp(28px, 5.5vh, 54px);
+  box-shadow: 0 4px 0 var(--sand-dark);
+}
+
+.want-name {
+  font-size: clamp(14px, 2.2vh, 22px);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.want.found {
+  background: #e3f5d6;
+  opacity: 0.6;
+}
+
+.want.found::after {
+  content: '✔';
+  position: absolute;
+  top: -0.15em;
+  right: 0.05em;
+  color: #2f9e44;
+  font-size: 0.8em;
+  font-weight: 900;
+}
+
+/* ---------- 안내창 ---------- */
+
+.howto-step {
+  gap: 1.5vw;
+}
+
+.howto-tap {
+  margin-left: 2vw;
+}
+
+.result-manger {
+  margin-bottom: 1.5vh;
+  font-size: clamp(50px, 9vh, 90px);
+}
+
+@keyframes found {
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.6);
+  }
+}
+
+@keyframes hint {
+  0%,
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes float-up {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -150%);
+  }
+}

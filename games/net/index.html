@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>베드로의 그물</title>
+  <link rel="stylesheet" href="../../shared/common.css">
+  <link rel="stylesheet" href="net.css">
+</head>
+<body class="net-game">
+  <div class="app">
+    <header class="hud">
+      <div class="timer" id="timer"><span id="time">60</span>초</div>
+      <div class="gauge">
+        <div class="gauge-fill" id="gaugeFill"></div>
+        <div class="gauge-text" id="gaugeText">0 / 153마리</div>
+      </div>
+    </header>
+
+    <main class="scene">
+      <div class="sky">
+        <div class="sun"></div>
+        <div class="shore"><span data-asset="fire"></span></div>
+      </div>
+      <div class="sea" id="sea">
+        <div class="fish-layer" id="fishLayer"></div>
+        <svg class="rope" id="rope"><line id="ropeLine"></line></svg>
+        <div class="net" id="net"></div>
+        <div class="boat" id="boat"><span data-asset="boat"></span></div>
+        <div class="hint" id="hint" hidden></div>
+      </div>
+    </main>
+  </div>
+
+  <section class="overlay" id="intro">
+    <div class="card">
+      <h1>베드로의 그물</h1>
+      <p>베드로와 제자들은 밤새 그물을 던졌지만<br>한 마리도 잡지 못했어요. 그때 예수님께서 말씀하셨어요.</p>
+      <p class="quote">"그물을 배 오른편에 던지라!"</p>
+      <div class="howto">
+        <div class="howto-step">
+          <span data-asset="fish"></span><span data-asset="fish"></span><span data-asset="fish"></span>
+          <span class="howto-tap">👆</span>
+        </div>
+        <p>물고기 떼를 눌러 그물을 던지세요.</p>
+      </div>
+      <p><b>60초 안에 153마리</b>를 잡으면 통과!</p>
+      <div class="btn-row">
+        <button class="btn" id="startBtn">시작하기</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="overlay countdown" id="countdown" hidden>
+    <div class="countdown-text">3</div>
+  </section>
+
+  <section class="overlay" id="result" hidden>
+    <div class="card">
+      <div class="result-win">
+        <h1>통과!</h1>
+        <div class="stamp">참<br>잘했어요</div>
+        <div class="breakfast">
+          <span data-asset="fire"></span><span data-asset="fish"></span><span data-asset="bread"></span>
+        </div>
+        <p>물고기를 <b>153마리</b>나 잡았어요!<br>예수님께서 숯불에 생선과 빵을 구워 놓고<br>"와서 아침을 먹어라" 하셨어요.</p>
+        <p class="verse">요한복음 21:6-12</p>
+        <p class="stamp-guide">스탬프를 받으세요!</p>
+      </div>
+      <div class="result-lose">
+        <h1>아쉬워요!</h1>
+        <p><b id="caughtCount">0</b>마리 잡았어요.<br>다시 도전해 볼까요?</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="retryBtn">다시 하기</button>
+        <a class="btn secondary" href="../../index.html">처음 화면</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="../../shared/common.js"></script>
+  <script src="net.js"></script>
+</body>
+</html>

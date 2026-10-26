@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>예수님 스탬프 투어</title>
+  <link rel="stylesheet" href="shared/common.css">
+  <style>
+    body {
+      min-height: 100%;
+      padding: calc(4vh + env(safe-area-inset-top)) 16px 4vh;
+      background: linear-gradient(var(--sky-top), var(--sky-bottom) 60%, var(--grass) 60%);
+      background-attachment: fixed;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(32px, 6vh, 60px);
+      font-weight: 900;
+    }
+
+    .subtitle {
+      margin: 1vh 0 4vh;
+      font-size: clamp(17px, 2.6vh, 26px);
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .game {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 24px 16px;
+      border-radius: 28px;
+      background: var(--cream);
+      color: inherit;
+      text-decoration: none;
+      box-shadow: 0 8px 0 var(--sand-dark);
+    }
+
+    .game:active {
+      transform: translateY(6px);
+      box-shadow: 0 2px 0 var(--sand-dark);
+    }
+
+    .game .num {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 900;
+      line-height: 36px;
+    }
+
+    .game .icon {
+      font-size: 64px;
+      line-height: 1;
+    }
+
+    .game .name {
+      font-size: 26px;
+      font-weight: 900;
+    }
+
+    .game .desc {
+      font-size: 17px;
+      opacity: 0.75;
+    }
+
+    .game.soon {
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .game.soon .desc::after {
+      content: ' · 준비 중';
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+  <h1>예수님 스탬프 투어</h1>
+  <p class="subtitle">게임을 통과하고 스탬프를 모아 보세요!</p>
+
+  <!-- 예수님의 생애 순서 -->
+  <nav class="games">
+    <a class="game" href="games/inn/index.html"><span class="num">1</span><span class="icon">🚪</span><span class="name">방 있나요?</span><span class="desc">여관 카드 짝맞추기</span></a>
+    <a class="game" href="games/stable/index.html"><span class="num">2</span><span class="icon">🔍</span><span class="name">마구간 숨은그림찾기</span><span class="desc">숨은 물건을 찾아요</span></a>
+    <a class="game" href="games/star/index.html"><span class="num">3</span><span class="icon">⭐</span><span class="name">예수님을 만나러 가요</span><span class="desc">별을 따라 베들레헴으로</span></a>
+    <a class="game" href="games/loaves/index.html"><span class="num">4</span><span class="icon">🍞</span><span class="name">오병이어 나눠주기</span><span class="desc">오천 명을 먹여요</span></a>
+    <a class="game" href="games/net/index.html"><span class="num">5</span><span class="icon">🎣</span><span class="name">베드로의 그물</span><span class="desc">배 오른편에 그물을 던져요</span></a>
+  </nav>
+</body>
+</html>

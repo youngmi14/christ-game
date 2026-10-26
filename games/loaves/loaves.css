@@ -1,0 +1,231 @@
+body.loaves {
+  overflow: hidden;
+}
+
+/* ---------- 가운데: 언덕과 줄 선 사람들 ---------- */
+
+.field {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 140% 100% at 50% 100%, var(--grass) 0 71%, var(--grass-dark) 71% 72%, transparent 72.5%),
+    linear-gradient(var(--sky-top), var(--sky-bottom));
+}
+
+.cloud {
+  position: absolute;
+  font-size: clamp(40px, 8vh, 90px);
+  opacity: 0.9;
+}
+
+.cloud.c1 {
+  top: 6%;
+  left: 8%;
+}
+
+.cloud.c2 {
+  top: 12%;
+  right: 10%;
+  font-size: clamp(30px, 6vh, 70px);
+}
+
+.crowd,
+.queue {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sitter {
+  position: absolute;
+  font-size: clamp(22px, 4.5vh, 44px);
+  animation: sit-in 0.35s ease-out both;
+}
+
+.person {
+  position: absolute;
+  left: 50%;
+  font-size: min(22vh, 26vw);
+  transform-origin: 50% 100%;
+  transition: bottom 0.28s ease-out, transform 0.28s ease-out, opacity 0.28s;
+}
+
+.person .face {
+  line-height: 1;
+}
+
+/* 원하는 음식 말풍선: 앞사람에게만 보인다 */
+.bubble {
+  position: absolute;
+  left: 78%;
+  bottom: 70%;
+  padding: 0.15em 0.2em;
+  border-radius: 0.35em;
+  background: #fff;
+  font-size: 0.5em;
+  box-shadow: 0 0.06em 0.15em rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(0.6);
+  transform-origin: 0 100%;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  left: 0.12em;
+  bottom: -0.2em;
+  border: 0.12em solid transparent;
+  border-top-color: #fff;
+  border-left-color: #fff;
+}
+
+.person.is-front .bubble,
+.person.leaving .bubble {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bubble.shake {
+  animation: shake 0.4s;
+}
+
+/* ---------- 아래쪽: 빵과 물고기 버튼 ---------- */
+
+.controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3vw;
+  height: 30vh;
+  padding: 2.5vh 4vw calc(3vh + env(safe-area-inset-bottom));
+  background: var(--sand);
+}
+
+.give {
+  display: flex;
+  flex: 0 1 36%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5vh;
+  height: 100%;
+  border: 0;
+  border-radius: 32px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  box-shadow: 0 8px 0 var(--sand-dark);
+  cursor: pointer;
+}
+
+.give .sprite {
+  font-size: min(13vh, 18vw);
+}
+
+.give .label {
+  font-size: clamp(18px, 3vh, 32px);
+  font-weight: 900;
+}
+
+.give:active,
+.give.pressed {
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 var(--sand-dark);
+}
+
+.basket {
+  font-size: min(10vh, 12vw);
+}
+
+/* 잘못 줬을 때 1초 동안 버튼을 덮는 화면 */
+.stun {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vh;
+  background: rgba(70, 60, 50, 0.6);
+  color: #fff;
+  font-size: clamp(24px, 4.5vh, 46px);
+  font-weight: 900;
+}
+
+.controls.stunned .stun {
+  display: flex;
+}
+
+.controls.stunned .give {
+  filter: grayscale(1);
+}
+
+.stun-bar {
+  width: 40%;
+  height: 12px;
+  border-radius: 99px;
+  background: #fff;
+  transform-origin: left;
+}
+
+.controls.stunned .stun-bar {
+  animation: drain var(--stun-ms) linear forwards;
+}
+
+/* ---------- 안내창 ---------- */
+
+.howto-bubble {
+  padding: 0.1em 0.2em;
+  border-radius: 0.3em;
+  background: var(--cream);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.howto-arrow {
+  font-size: 0.6em;
+  font-weight: 900;
+}
+
+.howto-key {
+  padding: 0.15em 0.3em;
+  border-radius: 0.25em;
+  background: #fff;
+  box-shadow: 0 0.08em 0 var(--sand-dark), 0 0 0 2px var(--sand) inset;
+}
+
+.baskets {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  justify-content: center;
+  gap: 4px 8px;
+  margin: 0 auto 1.5vh;
+  font-size: clamp(28px, 5vh, 46px);
+}
+
+.baskets .sprite {
+  animation: sit-in 0.3s ease-out both;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0) scale(1); }
+  20% { transform: translateX(-0.12em) scale(1.15); }
+  40% { transform: translateX(0.12em) scale(1.15); }
+  60% { transform: translateX(-0.08em) scale(1.1); }
+  80% { transform: translateX(0.08em) scale(1.05); }
+}
+
+@keyframes sit-in {
+  from {
+    transform: translateY(30%) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes drain {
+  to {
+    transform: scaleX(0);
+  }
+}

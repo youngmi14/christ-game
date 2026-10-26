@@ -1,0 +1,178 @@
+body.inn-game {
+  overflow: hidden;
+}
+
+/* ---------- 베들레헴의 밤거리 ---------- */
+
+.field {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 0 1.5px, transparent 2px) 0 0 / 11vmin 11vmin,
+    linear-gradient(#1b2550, #3a3f78 75%, #5a4a6e);
+}
+
+.board {
+  display: grid;
+  gap: var(--gap);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.board.done {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+/* ---------- 카드(여관 문) ---------- */
+
+.tile {
+  width: var(--tile-w);
+  height: calc(var(--tile-w) * 4 / 3);
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--ink);
+  perspective: 900px;
+  cursor: pointer;
+}
+
+.tile-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease-out;
+}
+
+.tile.open .tile-inner,
+.tile.matched .tile-inner {
+  transform: rotateY(180deg);
+}
+
+.tile-back,
+.tile-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12% / 9%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* 뒷면: 나무 문에 '여관' 간판 */
+.tile-back {
+  border: calc(var(--tile-w) * 0.04) solid #5a3214;
+  background: linear-gradient(#b0733f, #7a4521);
+  font-size: calc(var(--tile-w) * 0.5);
+  box-shadow: 0 calc(var(--tile-w) * 0.04) 0 rgba(0, 0, 0, 0.35);
+}
+
+.tile-back::before {
+  content: '여관';
+  position: absolute;
+  top: 7%;
+  padding: 0.1em 0.5em;
+  border-radius: 0.3em;
+  background: #f3dca8;
+  color: #5a3214;
+  font-size: calc(var(--tile-w) * 0.12);
+  font-weight: 900;
+}
+
+.tile-face {
+  gap: 4%;
+  background: var(--cream);
+  font-size: calc(var(--tile-w) * 0.5);
+  box-shadow: 0 calc(var(--tile-w) * 0.04) 0 rgba(0, 0, 0, 0.25);
+  transform: rotateY(180deg);
+}
+
+.tile-name {
+  font-size: calc(var(--tile-w) * 0.14);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.tile.matched .tile-face {
+  background: #fff3c4;
+  box-shadow: 0 0 0 calc(var(--tile-w) * 0.035) var(--gold), 0 0 calc(var(--tile-w) * 0.15) rgba(255, 201, 60, 0.7);
+  animation: matched 0.4s ease-out 0.3s;
+}
+
+/* 짝이 틀린 두 카드에 잠깐 붙는 표시 */
+.tile.nope .tile-face::before {
+  content: '방이 없어요!';
+  position: absolute;
+  top: 6%;
+  padding: 0.15em 0.5em;
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff;
+  font-size: calc(var(--tile-w) * 0.1);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+/* ---------- 마지막 문 ---------- */
+
+.finale {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --tile-w: min(36vh, 50vw);
+}
+
+.finale[hidden] {
+  display: none;
+}
+
+.finale .tile {
+  animation: pop-in 0.4s ease-out;
+}
+
+.finale .tile-face {
+  background: #fff3c4;
+  box-shadow: 0 0 calc(var(--tile-w) * 0.2) rgba(255, 220, 120, 0.9);
+}
+
+/* 마구간 안에 누운 아기 예수님 */
+.manger {
+  position: relative;
+  line-height: 1;
+}
+
+.manger .baby {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  font-size: 0.38em;
+  transform: translateX(-50%);
+}
+
+.result-manger {
+  margin-bottom: 1.5vh;
+  font-size: clamp(56px, 10vh, 100px);
+}
+
+/* ---------- 안내창 ---------- */
+
+.howto-arrow {
+  font-size: 0.6em;
+  font-weight: 900;
+}
+
+@keyframes matched {
+  50% {
+    transform: rotateY(180deg) scale(1.08);
+  }
+}
